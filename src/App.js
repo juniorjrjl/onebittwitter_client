@@ -1,11 +1,9 @@
 import 'materialize-css';
-import Header from './components/Header'
+import ProfilePageContainer from './containers/ProfilePageContainer'
 
 function App() {
   return (
-    <div>
-      <Header/>
-    </div>
+    <ProfilePageContainer/>
   );
 }
 
