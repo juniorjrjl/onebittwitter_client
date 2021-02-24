@@ -1,37 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import TrendingTopics from '../../components/TrendingTopics';
-import photo from '../../images/fake_avatar.png';
+import { connect } from 'react-redux';
+import { getHashtags } from './actions';
+import { bindActionCreators } from 'redux';
 
 class TrendingTopicsContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hashtags: []
-        };
-    }
-
     componentDidMount() {
-        axios.get(process.env.REACT_APP_API + '/trending')
-        .then((response)=>{
-            console.log(response.data.hashtags); 
-            this.setState(()=>{
-                return {
-                    hashtags: response.data.hashtags
-                }
-            })
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
-    
+        this.props.getHashtags();
+       }
+   
     render() {
         return (
-            <div>
-                <TrendingTopics hashtags={this.state.hashtags} />
-            </div>
+            <Fragment>
+                <TrendingTopics hashtags={this.props.hashtags} />
+            </Fragment>
         );
     }
 }
 
-export default TrendingTopicsContainer;
+function mapStateToProps(state) {
+    return {
+        hashtags: state.trendings.hashtags
+    }
+};
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ getHashtags }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrendingTopicsContainer);
