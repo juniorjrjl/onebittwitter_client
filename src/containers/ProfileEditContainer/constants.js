@@ -1,0 +1,1 @@
+export const UPDATE_IMAGE_PREVIEW = 'profile_edit/UPDATE_IMAGE_PREVIEW';

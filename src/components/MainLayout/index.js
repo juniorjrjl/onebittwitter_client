@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import Header from '../Header';
 import { Container } from 'react-materialize';
+import HeaderContainer from '../../containers/HeaderContainer';
  
 const MainLayout = (props) => (
   <Fragment>
-    <Header />
+    <HeaderContainer />
     <Container>
       { props.children }
     </Container>

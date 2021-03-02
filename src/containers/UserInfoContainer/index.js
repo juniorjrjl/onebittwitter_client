@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
 import UserInfo from '../../components/UserInfo'
-import photo from '../../images/fake_avatar.png';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class UserInfoContainer extends Component {
- constructor(props) {
-   super(props);
-
-   this.state = {
-     user: {},
-  };
+	constructor(props) {
+		super(props);
+	}
+ 
+	render() {
+		return (
+    		<UserInfo {...this.props.user}/>
+		);
+	}
 }
 
- componentDidMount() {
-   this.setState({
-     user: {
-             id: "x",
-             name: "Lorem Ipsun",
-             description: "lorem ipsun latinus arabicus matematicus, lorem ipsun latinus.",
-             tweets: "10k",
-             follow: "8k",
-             followers: "12k",
-             followed: true,
-             photo: photo
-          }
-      }
-    )        
+function mapStateToProps(state, ownProps) {
+	return { 
+		user: state.user,
+	}
+};
+   
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ }, dispatch)
 }
-
- render() {
-   return (
-     <UserInfo {...this.state.user}/>
-  );
-}
-}
-
-export default UserInfoContainer;
+   
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfoContainer)
