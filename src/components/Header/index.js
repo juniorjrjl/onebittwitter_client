@@ -22,7 +22,6 @@ const Header = (props) => (
 		<NavbarBlue href="/timeline" brand={<Logo src={logo} className="responsive-img col m6 center" alt="OneBitTwitter"/>} alignLinks="right">
 			<NavItem onClick={() => props.logOut()} >
 				Logout
-				{JSON.stringify(props)}
 			</NavItem>
 			<NavItem href={`/user/${props.id}/edit`}>
 				<IconUser>account_circle</IconUser>

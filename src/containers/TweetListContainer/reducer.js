@@ -2,7 +2,7 @@ import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET } from './constants';
  
 const initialState = { tweets: [] };
  
-export default function(state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_TWEETS:
             return action.payload

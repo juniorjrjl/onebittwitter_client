@@ -24,7 +24,7 @@ const TweetUnit = (props) => (
             			<b>{props.user.name}</b>
           			</Col>
           			<Col s={2} m={2} className="right-align">
-            			{ props.current_user.id == props.user.id &&
+            			{ props.current_user.id === props.user.id &&
               			<Dropdown trigger={<InvisibleButton> <Icon>expand_more</Icon> </InvisibleButton>}>
                 			<NavItem>
                   				<span className="grey-text text-darken-2">Edit</span>

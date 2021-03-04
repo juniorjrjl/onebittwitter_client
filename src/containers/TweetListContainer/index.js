@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import TweetUnit from '../../components/TweetUnit'
-import photo from '../../images/fake_avatar.png';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { deleteTweet, createTweet } from './actions.js';
-import TweetNew from '../../components/TweetNew';
+import TweetNew from '../../components/TweetNew'
  
  
 class TweetListContainer extends Component {
@@ -20,7 +19,7 @@ class TweetListContainer extends Component {
   	}
  
   	postTweet(event){
-    	if(event.keyCode == 13) {
+    	if(event.keyCode === 13) {
       		this.props.createTweet(event.target.value)
       		event.target.value = ""
     	}
@@ -30,7 +29,7 @@ class TweetListContainer extends Component {
     	var tweet_list = this.props.tweets.length ? (this.props.tweets) : []
     		return (
       			<Fragment>
-        			{this.props.current_user.id == this.props.user.id && <TweetNew postTweet={this.postTweet}/>}
+        			{this.props.current_user.id === this.props.user.id && <TweetNew postTweet={this.postTweet}/>}
         			{tweet_list.map((tweet, i) =>
           				<TweetUnit {...tweet} key={i} deleteTweet={this.deleteTweet} current_user={this.props.current_user}/>)}
       			</Fragment>
