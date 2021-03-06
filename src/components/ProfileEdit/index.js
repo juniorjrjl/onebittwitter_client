@@ -63,8 +63,8 @@ const ProfileEdit = (props) => (
                             <div className="form">
                                 <div>
                                     <LocalForm onSubmit={(values) => props.updatePassword(values) } initialState={{ id: props.id,}}>
-                                        <Control.text model=".password" name="password" placeholder="Password" />
-                                        <Control.text model=".password_confirmation" name="password_confirmation" placeholder="Password Confirmation" />
+                                        <Control.text type="password" model=".password" name="password" placeholder="Password" />
+                                        <Control.text type="password" model=".password_confirmation" name="password_confirmation" placeholder="Password Confirmation" />
                                         <div className="right">
                                             <button type="submit" className="blue btn grey darken-2">Update</button>
                                         </div>

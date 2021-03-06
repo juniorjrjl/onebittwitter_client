@@ -13,14 +13,15 @@ class PrivateRoute extends React.Component {
     }
 
     render() {
-        return (
-            localStorage.jwt ? 
-                (this.props.current_user.id ? 
-                    (<Route {...this.props}> </Route> ) : 
-                    'Loading...'):
-                (<Redirect to={{pathname: "/",state: { from: this.props.location }}}/>)
-        );
-    }
+        const {component: Component, ...rest} = this.props;
+            let redirect = <Redirect to={{pathname: '/login'}} />
+            if (localStorage.jwt){
+                redirect = rest.current_user.id ? <Component {...rest} /> : redirect = 'Loading...';
+            } 
+            return (
+                <Route {...rest} render={props => (redirect)} />
+            );
+        }
 
 }
 
