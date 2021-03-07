@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import RowNoBottomMargin from '../common/RowNoBottomMargin';
 import InvisibleButton from '../../components/common/InvisibleButton';
 import fake_avatar from '../../images/fake_avatar.png';
+import moment from 'moment'
  
  
 const Avatar = styled.img`
@@ -21,7 +22,7 @@ const TweetUnit = (props) => (
     		<Col s={12} m={10}>
     			<RowNoBottomMargin>
           			<Col s={10} m={10}>
-            			<b>{props.user.name}</b>
+            			<b>{props.user.name}</b> <label style={{float: 'right'}}>posted at: {moment(props.created_at).fromNow()}</label>
           			</Col>
           			<Col s={2} m={2} className="right-align">
             			{ props.current_user.id === props.user.id &&
