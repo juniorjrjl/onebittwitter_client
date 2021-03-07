@@ -19,7 +19,7 @@ const IconUser = styled(Icon)`
 
 const Header = (props) => (
 	<Row>
-		<NavbarBlue href="/timeline" brand={<Logo src={logo} className="responsive-img col m6 center" alt="OneBitTwitter"/>} alignLinks="right">
+		<NavbarBlue href="/timeline" brand={<Logo src={logo} alt="OneBitTwitter"/>} alignLinks="right">
 			<NavItem onClick={() => props.logOut()} >
 				Logout
 			</NavItem>

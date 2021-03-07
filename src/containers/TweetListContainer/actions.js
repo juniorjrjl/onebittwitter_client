@@ -1,5 +1,5 @@
 import API from '../../api.js';
-import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET, LIKE_TWEET, DISLIKE_TWEET } from './constants';
+import { EDIT_TWEET, DELETE_TWEET, ADD_TWEET, LIKE_TWEET, DISLIKE_TWEET } from './constants';
  
 export function deleteTweet(id) {
     const headers =  { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') };
@@ -20,6 +20,18 @@ export function createTweet(body) {
     return (dispatch) => {
         request.then(
             resp => dispatch({ type: ADD_TWEET, payload: resp.data }),
+            error => window.M.toast({html: 'Problem in create Tweet', classes: 'red'})
+        )
+    };
+}
+
+export function editTweet(id, body) {
+    const headers =  { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') };
+    const request = API.put(`/tweets/${id}`, {body: body}, {headers: headers});
+ 
+    return (dispatch) => {
+        request.then(
+            resp => dispatch({ type: EDIT_TWEET, payload: resp.data }),
             error => window.M.toast({html: 'Problem in create Tweet', classes: 'red'})
         )
     };
