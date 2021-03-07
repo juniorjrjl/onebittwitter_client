@@ -37,13 +37,16 @@ const TweetUnit = (props) => (
         		</RowNoBottomMargin>
         		<Row>
           			<Col s={12} m={12}>
-            			{props.body}
+            			{props.body}like
           			</Col>
         		</Row>
         		<RowNoBottomMargin>
           			<Col s={1} m={1}>
-            			<InvisibleButton>
-              				<Icon>thumb_up</Icon>
+            			<InvisibleButton onClick={() => props.likeTweet(props.id)} style={{display: !props.liked ? 'block' : 'none'}}>
+              				<Icon className='black-text'>thumb_up</Icon>
+            			</InvisibleButton>
+						<InvisibleButton onClick={() => props.dislikeTweet(props.id)} style={{display: props.liked ? 'block' : 'none'}}>
+              				<Icon className='blue-text'>thumb_up</Icon>
             			</InvisibleButton>
           			</Col>
           			<Col s={1} m={1}>

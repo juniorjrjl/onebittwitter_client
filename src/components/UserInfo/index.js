@@ -29,7 +29,9 @@ const UserInfo = (props) => (
         		<b className="grey-text text-darken-2">{ props.name }</b>
       		</Col>
       		<Col m={3} s={3}>
-        		{ props.followed ?  <UserUnFollow/> : <UserFollow/> }
+				<div style={{display: props.id === props.currentUserId ? 'none' : 'block'}}>
+        			{ props.followed ?  <UserUnFollow/> : <UserFollow/> }
+				</div>
       		</Col>
     	</RowNoBottomMargin>
     	<Row>

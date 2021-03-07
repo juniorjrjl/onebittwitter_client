@@ -10,7 +10,7 @@ class UserInfoContainer extends Component {
  
 	render() {
 		return (
-    		<UserInfo {...this.props.user}/>
+    		<UserInfo {...this.props.user} currentUserId={this.props.current_user_id}/>
 		);
 	}
 }
@@ -18,6 +18,7 @@ class UserInfoContainer extends Component {
 function mapStateToProps(state, ownProps) {
 	return { 
 		user: state.user,
+		current_user_id: state.current_user.id
 	}
 };
    

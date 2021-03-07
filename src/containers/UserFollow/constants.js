@@ -1,0 +1,1 @@
+export const FOLLOW_USER = 'user_info/FOLLOW_USER';

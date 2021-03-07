@@ -1,0 +1,1 @@
+export const UNFOLLOW_USER = 'user_info/UNFOLLOW_USER';

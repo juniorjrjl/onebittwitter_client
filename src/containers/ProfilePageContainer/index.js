@@ -23,7 +23,7 @@ class ProfilePageContainer extends Component {
 function mapStateToProps(state, ownProps) {
 	return { 
 		user: state.user,
-		id: ownProps.match.params.id
+		id: ownProps.computedMatch.params.id
 	}
 };
    
