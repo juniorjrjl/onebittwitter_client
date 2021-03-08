@@ -48,6 +48,14 @@ const TweetUnit = (props) => (
                 		</TextInput >
 					</Col>
         		</Row>
+				{props.tweet_original_id &&<Row>
+					<Card title="Original tweet">
+					 <Col s={12} m={12}>
+						<Col s={8} m={8}><label>{props.tweet_original.body}</label></Col>
+						<Col s={4} m={4}><label>{moment(props.created_at).fromNow()}</label></Col>
+						</Col>
+						</Card>
+				</Row>}
         		<RowNoBottomMargin>
           			<Col s={1} m={1}>
             			<InvisibleButton onClick={() => props.likeTweet(props.id)} style={{display: !props.liked ? 'block' : 'none'}}>
@@ -58,7 +66,7 @@ const TweetUnit = (props) => (
             			</InvisibleButton>
           			</Col>
           			<Col s={1} m={1}>
-            			<InvisibleButton>
+            			<InvisibleButton onClick={() => props.setRetweet(props.id, props.body)}>
               				<Icon>repeat</Icon>
             			</InvisibleButton>
           			</Col>

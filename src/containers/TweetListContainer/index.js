@@ -17,9 +17,12 @@ class TweetListContainer extends Component {
 		this.dislikeTweet = this.dislikeTweet.bind(this)
 		this.enableEdit = this.enableEdit.bind(this)
 		this.setEditText = this.setEditText.bind(this)
+		this.setRetweet = this.setRetweet.bind(this)
 		this.state = {
 			editMode: -1,
-			editText: undefined
+			editText: undefined,
+			retweetId: undefined,
+			retweetBody: undefined
 		}
   	}
  
@@ -46,10 +49,11 @@ class TweetListContainer extends Component {
 		}
 	}
 
-  	postTweet(event){
+  	postTweet(event, tweet_original_id){
     	if(event.keyCode === 13) {
-      		this.props.createTweet(event.target.value)
+      		this.props.createTweet(event.target.value, tweet_original_id)
       		event.target.value = ""
+			  this.setState({retweetId: undefined, retweetBody: undefined})
     	}
   	}
  
@@ -61,14 +65,23 @@ class TweetListContainer extends Component {
 		this.props.dislikeTweet(id)
 	}
 
+	setRetweet(id, body){
+		this.setState({retweetId: id, retweetBody: body})
+	}
+
   	render() {
     	var tweet_list = this.props.tweets.length ? (this.props.tweets) : []
+			console.table(tweet_list)
     		return (
       			<Fragment>
-        			{this.props.current_user.id === this.props.user.id && <TweetNew postTweet={this.postTweet}/>}
+        			{this.props.current_user.id === this.props.user.id && 
+						<TweetNew postTweet={this.postTweet} retweetId={this.state.retweetId} 
+							retweetBody={this.state.retweetBody} setRetweet={this.setRetweet}/>
+					}
         			{tweet_list.map((tweet, i) =>
           				<TweetUnit {...tweet} key={i} likeTweet={this.likeTweet} dislikeTweet={this.dislikeTweet}
-						  enableEdit={this.enableEdit} editMode={this.state.editMode} editText={this.state.editText} setEditText={this.setEditText}
+						  enableEdit={this.enableEdit} editMode={this.state.editMode} editText={this.state.editText} 
+						  setEditText={this.setEditText} setRetweet={this.setRetweet}
 						  editTweet={this.editTweet} deleteTweet={this.deleteTweet} current_user={this.props.current_user}/>)}
       			</Fragment>
 			);

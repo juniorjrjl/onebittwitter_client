@@ -13,9 +13,10 @@ export function deleteTweet(id) {
     };
 }
  
-export function createTweet(body) {
+export function createTweet(body, tweet_original_id) {
     const headers =  { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') };
-    const request = API.post(`/tweets`, {body: body}, {headers: headers});
+    const requestBody = tweet_original_id ? {body: body, tweet_original_id : tweet_original_id} : {body: body}
+    const request = API.post(`/tweets`, requestBody, {headers: headers});
  
     return (dispatch) => {
         request.then(
